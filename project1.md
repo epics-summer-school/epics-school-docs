@@ -8,8 +8,8 @@ subtitle: project
 **Group Number 1**
 
 ## Tutor Information
-**Tutor:** Luca Porzio  
-**E-Mail:** luca.porzio@helmholtz-berlin.de
+**Tutors:** Luca Porzio, Marcel Bajdel, Simone Vadilonga, Will Smith
+**E-Mail:** luca.porzio@helmholtz-berlin.de, marcel.bajdel@helmholtz-berlin.de
 
 ## Project Description
 This project uses a laser and a diffraction grating to perform diffraction experiments. The laser is controlled by a Raspberry Pi, which acts as a beam controller. The Raspberry Pi provides power and modulation signal to the laser in order to switch it on/off and control the beam intensity. The diffraction grating is mounted on a support which is fixed to the motor axis and oriented in a direction such that the laser is able to hit the grating surface. The motor and the grating are located inside the chamber to avoid interference with natural light.
@@ -60,8 +60,7 @@ The whole setup is automated and controlled by EPICS IOCs. Phoebus is used to pr
 
 ## Calculate the wavelength of the laser
 When monochromatic light is incident on a grating surface, it is diffracted into discrete directions. We can picture each grating groove as being a very small, slit-shaped source of diffracted light. The light diffracted by each groove combines to form a set of diffracted wavefronts. This phenomenon is described by the grating equation:
-
-\\(m \lambda = d \sin(\theta)\\)
+$$\lambda = d \sin(\theta)$$
 
 Where:
 - m is the diffraction order
@@ -90,16 +89,57 @@ Calculate the grating density. To do this:
 
 ## Tasks Description
 ### Hardware Setup
-Detailed description of all the pieces of hardware, interfaces and protocols, required setup. (e.g. controller SA-500 has 4 channels, connector are type D-Sub 15, Serial interface RS-232. A Serial-to-Ethernet device is needed,...)
+
+Connecting all the devices to the network:
+
+* camera (AXIS M1135 MK II)
+* raspberry pi with laser (PICO 70142167 ARD-Punkt-LASER-MDI650)
+* motor controller (MCS Smaract motor controller)
+
+#### Camera
+
+Camera is using power over ethernet, the switch that we provide can deliver it so there's no additional power supply needed. Once online the camera image is available in the network. 
+
+#### Motor controller
+
+Motor controller uses Ethernet interface to connect to the network and it exposes a set of ASCI instructions to debug it. Please check the controller user manual for the details. This device has to be set to the static IP address.
+
+#### Raspberry PI
+ 
+Raspberry PI uses Ethernet interface to connect to the network.
+
+#### Laser pointer
+
+The laser has to be connected to the Raspberry using GPIO pins for power and modulation. 
+
+#### Gratings
+
+You have a set of gratings to choose from for the experiment. They should be mounted to the motor using a physical support. 
+
 
 ### EPICS Layer
-Detailed description of EPICS components to use, requirements for the IOCs and mandatory functions to implement. (e.g. We need 4 IOCs, motor IOCs must use motor record. Power Supply must use StreamDevice, protocol description is inside this manual,...)
+
+1. Create an IOC for the laser pointer that has to run on the Raspberry PI (you can find a template IOC in the Github)
+  - the IOC must be able to control the modulation of the laser
+2. Create the motor record based IOC for the MCS smaract controller (see github template)
+  - each motor axis must be implemented using motor record
+3. Create the areadetector IOC for the URL camera using the ADUrl module
+
 
 ### Phoebus Screen and additional services
-Requirements for the screens, functionalities to implement. (e.g. The OPI must show information about controller, serial number, firmware version, …, one button must trigger acquisition of the camera,… , change color of the LED based on threshold,…, setup archiver for these PVs)
+
+1. Phoebus screen to control the modulation of the laser pointer
+2. Phoebus screen to control the motors (check the motor record repository for the standard UIs)
+3. Phoebus screen to control the camera (check the Areadetector repositories)
+4. Phoebus main screen as main entry point for the project
+5. Setup the archiver appliance in Phoebus
+6. (Optional) Define alarms (in the IOC database) and setup alarm-server and phoebus to display alarms
+
 
 ### Ophyd + Bluesky
-Detailed description of plans to implement, functions and other information about the experiments. (e.g. create a scan plan that moves a motor by 20 degrees 50 times, implement callback to plot data against timestamp, create ophyd device with the function to calibrate the motor,...)
+
+Create an Ophyd device for the laser, motor record and areadetector camera.
+
 
 ## Final Presentation
 Prepare a slideshow presentation with a duration of about 45 minutes. Each responsible defined in the Task Structure must present in details the work that the group has done. At the end of the presentation, the group must show a working demo of their project.
