@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Project 1
-subtitle: Laser diffraction
+title: Laser diffraction
+subtitle: project
 ---
 
 # Laser Diffraction
@@ -61,7 +61,7 @@ The whole setup is automated and controlled by EPICS IOCs. Phoebus is used to pr
 ## Calculate the wavelength of the laser
 When monochromatic light is incident on a grating surface, it is diffracted into discrete directions. We can picture each grating groove as being a very small, slit-shaped source of diffracted light. The light diffracted by each groove combines to form a set of diffracted wavefronts. This phenomenon is described by the grating equation:
 
-$ mλ = d \sin(θ) $
+$$mλ = d \sin(θ)$$
 
 Where:
 - m is the diffraction order
