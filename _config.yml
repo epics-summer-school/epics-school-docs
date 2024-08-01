@@ -20,6 +20,8 @@ author: Marcel Bajdel
 
 navbar-links:
   About Me: "aboutme"
+  Virtual Machine: "virtualmachine"
+  1 Project: "project1"
   Resources:
     - EPICS Summer School 2024: "https://events.hifis.net/event/1259/"
 
