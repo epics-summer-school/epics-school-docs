@@ -6,6 +6,8 @@ subtitle: How to use the VM
 
 ## Introduction to Using VirtualBox
 
+<span style="color:red">The link to download the .ova file: [Summer School VM](https://nubes.helmholtz-berlin.de/s/YcsTe5xrqmfeLKB)</span>.
+
 VirtualBox is a powerful, open-source virtualization tool that allows you to run multiple operating systems simultaneously on your computer. This is particularly useful for testing, development, or running software that is only available on specific operating systems. In this guide, we will walk you through the steps to install VirtualBox, and how to upload and run a virtual machine using an `.ova` file.
 
 The `.ova` file used in this guide was built on VirtualBox version `6.1.50_Ubuntu r161033` on Ubuntu 22.04. The virtual machine requires at least 40GB of disk space and at least 4GB of RAM.
