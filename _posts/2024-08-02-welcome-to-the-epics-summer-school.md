@@ -12,4 +12,4 @@ author: EPICS Summer School Committee
 <h1 align="center">Welcome to the EPICS Summer School 2024!</h1>
 
 
-![EPICS Summer School](/assets/img/hzb_1.png)
+![EPICS Summer School]({{ '/assets/img/hzb_1.png' | relative_url }})
