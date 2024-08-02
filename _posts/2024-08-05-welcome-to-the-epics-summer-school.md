@@ -2,7 +2,7 @@
 layout: post
 title: Welcome to the HZB EPICS Summer School 2024
 #subtitle: Excerpt from Soulshaping by Jeff Brown
-cover-img: /assets/img/berlin.jpg
+cover-img: /assets/img/berlin2.jpg
 #thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/image.png
 tags: [books, test]
