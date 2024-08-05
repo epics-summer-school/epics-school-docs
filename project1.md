@@ -9,6 +9,7 @@ subtitle: project
 
 ## Tutor Information
 **Tutors:** Luca Porzio, Marcel Bajdel, Simone Vadilonga, Will Smith
+
 **E-Mail:** luca.porzio@helmholtz-berlin.de, marcel.bajdel@helmholtz-berlin.de
 
 ## Project Description
@@ -60,6 +61,7 @@ The whole setup is automated and controlled by EPICS IOCs. Phoebus is used to pr
 
 ## Calculate the wavelength of the laser
 When monochromatic light is incident on a grating surface, it is diffracted into discrete directions. We can picture each grating groove as being a very small, slit-shaped source of diffracted light. The light diffracted by each groove combines to form a set of diffracted wavefronts. This phenomenon is described by the grating equation:
+
 $$\lambda = d \sin(\theta)$$
 
 Where:

@@ -6,7 +6,7 @@ subtitle: How to use the VM
 
 ## Introduction to Using VirtualBox
 
-<span style="color:red">The link to download the .ova file: [Summer School VM](https://nubes.helmholtz-berlin.de/s/HGo9d38dwsqzHYK).</span>
+<span style="color:red">The link to download the .ova file: .</span>
 
 <span style = "color:red">The username is epics and password is the same.</span>
 
