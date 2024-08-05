@@ -6,7 +6,9 @@ subtitle: How to use the VM
 
 ## Introduction to Using VirtualBox
 
-<span style="color:red">The link to download the .ova file: [Summer School VM](https://nubes.helmholtz-berlin.de/s/YcsTe5xrqmfeLKB)</span>.
+<span style="color:red">The link to download the .ova file: [Summer School VM](https://nubes.helmholtz-berlin.de/s/HGo9d38dwsqzHYK).</span>
+
+<span style = "color:red">The username is epics and password is the same.</span>
 
 VirtualBox is a powerful, open-source virtualization tool that allows you to run multiple operating systems simultaneously on your computer. This is particularly useful for testing, development, or running software that is only available on specific operating systems. In this guide, we will walk you through the steps to install VirtualBox, and how to upload and run a virtual machine using an `.ova` file.
 
