@@ -5,7 +5,7 @@ title: Welcome to the HZB EPICS Summer School 2024
 cover-img: /assets/img/berlin.jpg
 thumbnail-img: /assets/img/image.png
 share-img: /assets/img/image.png
-tags: [books, test]
+tags: [welcome]
 author: EPICS Summer School Committee
 ---
 

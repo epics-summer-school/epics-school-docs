@@ -5,7 +5,7 @@ title: Network during EPICS Summer School
 cover-img: /assets/img/berlin.jpg
 thumbnail-img: /assets/img/image.png
 share-img: /assets/img/network.png
-tags: [books, test]
+tags: [project]
 author: EPICS Summer School Committee
 ---
 
