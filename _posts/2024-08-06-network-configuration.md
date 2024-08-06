@@ -19,3 +19,7 @@ author: EPICS Summer School Committee
 
 ![Network]({{ '../assets/images/network.png' | relative_url }})
 
+
+## Tips and tricks
+
+Please make use of tools like nmap (a handy tool that can help you with network mapping) or a tool like netcat to check the reachability of the hosts that are connected to your network.
