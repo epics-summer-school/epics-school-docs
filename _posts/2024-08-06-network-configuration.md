@@ -4,7 +4,7 @@ title: Network during EPICS Summer School
 #subtitle: Excerpt from Soulshaping by Jeff Brown
 cover-img: /assets/img/berlin.jpg
 thumbnail-img: /assets/img/image.png
-share-img: /assets/img/image.png
+share-img: /assets/img/network.png
 tags: [books, test]
 author: EPICS Summer School Committee
 ---
