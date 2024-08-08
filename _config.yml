@@ -22,6 +22,7 @@ navbar-links:
   About Me: "aboutme"
   Resources:
     - Virtual Machine: "virtualmachine"
+    - bluesky_training: "bluesky_training"
     - Laser Diffraction: "project1"
     - EPICS Summer School 2024: "https://events.hifis.net/event/1259/"
 
