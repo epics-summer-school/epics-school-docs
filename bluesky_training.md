@@ -220,14 +220,17 @@ To check the state of the Run engine you can:
 
 Imagine you want to run your experiment which is going to involve changing temperatures, gas mixtures and reading from a detector. An example of the graph could be:
 
-![Experiment Graph](images/experiment.png)
+![Experiment Graph]({{ '/assets/img/experiment.png' | relative_url }})
 
 Let's take a look at the overnight_example.py which is in the user_scripts folder:
 
 `%edit overnight_example.py`
 
-`load('overnight_example.py')`
+`%load overnight_example.py`
 
+How to run the plan:
+
+`RE(my_exp())`
 
 ## How to write a script
 Make a folder with your name in `/home/bluesky/.bluesky/user_scripts/your_name`. 
