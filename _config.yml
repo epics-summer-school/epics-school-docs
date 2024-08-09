@@ -24,6 +24,7 @@ navbar-links:
     - Virtual Machine: "virtualmachine"
     - bluesky_training: "bluesky_training"
     - Laser Diffraction: "project1"
+    - Magnetic Field Measurement: "project2"
     - EPICS Summer School 2024: "https://events.hifis.net/event/1259/"
 
 ################
