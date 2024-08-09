@@ -154,7 +154,22 @@ Colors for leds (and text if required) must be used in according to the informat
 
 ### Ophyd + Bluesky
 
-Create an Ophyd device for the laser, motor record and areadetector camera.
+Create an Ophyd device for the teslameter, motor axis, and power supply. every device must contain the proper variables and set of information required to prepare the following Bluesky experiment.
+
+#### Bluesky experiment
+
+* **initialization**
+  * set home position for motor axis
+  * zero-reset for sensor probe
+ 
+* **measurement 1**
+  * set a current for the power supply
+  * scan procedure for measure acquisition at different axis positions
+      
+* **measurement 2**
+  * set a motor position for the probe
+  * scan procedure for measure acquisition at different power supply's current sepoints
+
 
 
 ## Final Presentation
