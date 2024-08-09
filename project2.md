@@ -130,12 +130,26 @@ The principal characteristics required for the control of every element are indi
 
 ### Phoebus Screen and additional services
 
-1. Phoebus screen to control the modulation of the laser pointer
-2. Phoebus screen to control the motors (check the motor record repository for the standard UIs)
-3. Phoebus screen to control the camera (check the Areadetector repositories)
-4. Phoebus main screen as main entry point for the project
-5. Setup the archiver appliance in Phoebus
-6. (Optional) Define alarms (in the IOC database) and setup alarm-server and phoebus to display alarms
+The control system's graphical user interface is composed of different panels, which provide different info and controls.
+
+The main OPI must show:
+* information about the principal devices (power supply, teslameter, motor driver) showing the serial number, firmware version, etc. where available
+* the principal parameters (commands and readbacks) for each device. Consider to use in alternate mode both sliders and input text for analog commands. If logic is required, decide and motivate where it must be implemented (at IOC level or Phoebus application level)
+* Navigation buttons to open and navigate through sub-panels. Buttons positions and behavior are chosen by the developer
+* A graph with a representation of the magnetic field distribution based on the measurements acquired
+
+
+The sub-panels provide the interface to the different devices, showing all the details provided according to the device’s user manuals.  
+
+In particular, there must be a sub-panel for:
+    * the power supply details (complete control with commands and readbacks, diagnostics, etc.)
+    * the teslameter details
+    * the stepper motor details (based on the PVs provided by the IOC)
+
+Colors for leds (and text if required) must be used in according to the information provided:
+    * Green: enabled / OK 
+    * Yellow / Orange: warning
+    * Red: error / fault
 
 
 ### Ophyd + Bluesky
