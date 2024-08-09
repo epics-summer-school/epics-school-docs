@@ -4,8 +4,8 @@ title: Magnetic Field Measurement
 subtitle: project
 ---
 
-# Laser Diffraction
-**Group Number 1**
+# Magnetic Field Measurement
+**Groups Number 4  and 5**
 
 ## Tutor Information
 **Tutors:** Maurizio Montis, Mauro Giacchini
@@ -39,35 +39,24 @@ Students are tasked with creating a control system to automate the magnetic fiel
 - Server with VxWorks OS and VSFTP service (for the motor driver)
   
 ## Project Objectives
-- Demonstrate correct communication between hardware components.
-- Configure and test VME-based and EPICS IOC for motor drivers.
+- Demonstrate correct communication between hardware components
+- Configure and test VME-based and EPICS IOC for motor drivers
 - Verify the kinematic transmission with the stepper motor and the mechanical setup
-- Implement EPICS IOC for the power supply and the teslameter.
-- Created the proper device support to interface the power supply and teslameter 
-- Create Phoebus Control Panels devoted to supervising the entire setup.
-- Describe management and organization strategy.
+- Implement EPICS IOC for the power supply and the teslameter
+- Created the proper device support to interface the power supply and teslameter
+  - teslameter:
+    - zero-reset probe for initial measurements
+    - read X, Y, Z, and the Average magnetic field from the probe
+  - power supply:
+    - enable power supply command and readback
+    - current setpoint command
+    - current and voltage readbacks
+    - (optional) power supply fault status  
+- Create Phoebus Control Panels devoted to supervising the entire setup
+- Describe management and organization strategy
 - Map the setup in a BlueSky service and define proper experimental operations
 
-## Calculate the wavelength of the laser
-When monochromatic light is incident on a grating surface, it is diffracted into discrete directions. We can picture each grating groove as being a very small, slit-shaped source of diffracted light. The light diffracted by each groove combines to form a set of diffracted wavefronts. This phenomenon is described by the grating equation:
 
-$$\lambda = d \sin(\theta)$$
-
-Where:
-- m is the diffraction order
-- λ is the wavelength of the light (in meters)
-- d is the distance between the grooves of the grating
-- θ is the angle between the central maximum and the maximum of order $m
-
-### Aim of the Exercise
-Calculate the grating density. To do this:
-1. Mount your setup so that the laser is diffracting on the grating and hitting the black screen.
-2. Make a ROI around the m=0 diffraction peak.
-3. Scan the grating angle.
-
-### Optional:
-- GUI: Plot projections on the X,Y axes of the beam shape in the Phoebus camera display.
-- Bluesky: Implement suspenders on Bluesky RunEngine monitoring laser beam PV to automatically suspend/resume a plan if the beam is lost.
 
 ## Task Structure
 
@@ -81,40 +70,62 @@ Calculate the grating density. To do this:
 ## Tasks Description
 ### Hardware Setup
 
-Connecting all the devices to the network:
+The experiment requires a dedicated LAN network to work properly: every device communicates via an ethernet port.
 
-* camera (AXIS M1135 MK II)
-* raspberry pi with laser (PICO 70142167 ARD-Punkt-LASER-MDI650)
-* motor controller (MCS Smaract motor controller)
+The principal characteristics of every element are indicated below:
+* Power Supply
+* Teslameter
+* Motor Driver
+* Network Switch
+* Stepper Motor
 
-#### Camera
+#### **Power Supply**:
+* electrical connections with steerer
+* communication via an ethernet link
+* serial and network communication setup via the web interface is required (require info authentication to the tutors)
 
-Camera is using power over ethernet, the switch that we provide can deliver it so there's no additional power supply needed. Once online the camera image is available in the network. 
+#### **Teslameter**:
+* connection to magnetic field sensor
+* communication via an ethernet link
+* network communication setup is required
+  
+#### **Motor Driver**:
+* electrical connection with the stepper motor, DB25 to DB15 transition required
+* network connection via ethernet link. Network configuration at OS level is required and done via serial communication (USB-to-RS232 converter required)
 
-#### Motor controller
+#### **Network Switch**:
+* devices properly connected in the LAN
 
-Motor controller uses Ethernet interface to connect to the network and it exposes a set of ASCI instructions to debug it. Please check the controller user manual for the details. This device has to be set to the static IP address.
-
-#### Raspberry PI
- 
-Raspberry PI uses Ethernet interface to connect to the network.
-
-#### Laser pointer
-
-The laser has to be connected to the Raspberry using GPIO pins for power and modulation. 
-
-#### Gratings
-
-You have a set of gratings to choose from for the experiment. They should be mounted to the motor using a physical support. 
+#### **Stepper Motor**:
+* electrical connection with the motor driver, DB15 to DB25 transition required
+* kinematic transmission is required to convert rotation movement in longitudinal movement
+* limit switches are required to prevent dangerous positions for the sensor
 
 
 ### EPICS Layer
 
-1. Create an IOC for the laser pointer that has to run on the Raspberry PI (you can find a template IOC in the Github)
-  - the IOC must be able to control the modulation of the laser
-2. Create the motor record based IOC for the MCS smaract controller (see github template)
-  - each motor axis must be implemented using motor record
-3. Create the areadetector IOC for the URL camera using the ADUrl module
+Every single device must be interfaced in EPICS, with the exception of the motor driver which already provides an IOC. 
+
+There must be 2 IOCs, one for the power supply and one for the teslameter. Every IOC requires dedicated device support to proper interface the hardware in the EPICS environment.
+
+The principal characteristics required for the control of every element are indicated below:
+
+#### **Power Supply**:
+* Device support with streamdevice
+* List of commands available on the manual
+* The power supply is controlled in current, proper EPICS records must be implemented for controls and readbacks
+* (*optional*) Provide the set of information related to device diagnostics at the EPICS level
+
+#### **Teslameter**:
+* Device support with streamdevice
+* List of commands available on the manual
+* The teslameter provides the measurement of the magnetic field in 3 directions. Provided the proper set of EPICS records
+  
+#### **Motor Driver**:
+* The IOC is already provided, analyze the list of PVs provided and identify the principal candidates for the control
+
+#### **softIOC**:
+* An additional IOC (softIOC) devoted to provide data and calculation required by the GUI (i.e. data for plots) can be implemented if considered suitable for the control system architecture
 
 
 ### Phoebus Screen and additional services
